@@ -1,0 +1,36 @@
+.header{
+    background-color: aliceblue;
+    width: 100%;
+    height: auto;
+    position: sticky;
+    top:0.07vh;
+    z-index: 10;
+}
+/* sidebar style here */
+.sidebar{
+    z-index: 0;
+    background-color: aliceblue;
+    width: 25vw;
+    height: 100%;
+    position: sticky;
+    top:15vh;
+}
+#profilePic{
+    background-size: cover;
+    height: auto ;
+    max-height: 65% ;
+    width: 100% !important;
+    object-fit: cover;    
+}
+
+/* main styles here */
+.main{
+    background-color: aliceblue;
+    width: 70vw;
+    height: 100%;
+}
+
+#card{
+    margin: 5%;
+    border: none !important;
+}
