@@ -1,4 +1,4 @@
-`import PostQueries from '../../../db/queries/index.js';
+import PostQueries from '../../../db/queries/index.js';
 
 export const deletePostRoute = async (req, res) => {
   const postId = req.params.id;
