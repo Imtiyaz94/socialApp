@@ -1,8 +1,17 @@
 # Social App
 
-Front end url : http://localhost:3000/
+First install all packages in both folder (client & server) using below command : 
+command : npm install
 
-Back end url : http://localhost:8000/api/auth/
+Then open each folder and start using listed points : 
+
+Front end  = 
+url : http://localhost:3000/
+Start : npm start
+
+Back end =
+url : http://localhost:8000/api/auth/
+Start : npm start
 
 Tech used in this project : 
 1. Front End with React JS
