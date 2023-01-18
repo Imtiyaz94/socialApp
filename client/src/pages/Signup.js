@@ -81,7 +81,7 @@ const Signup = () => {
   //   handleSubmit();
   // }, []);
   return (
-    <div className='container mt-5 p-3 shadow-sm ' id='signup-form'>
+    <div className='container mt-5 p-4 shadow-sm ' id='signup-form'>
       <div className='form-heading h2 text-center'>Sign Up</div>
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className='mb-3'>
@@ -203,8 +203,8 @@ const Signup = () => {
         >
           Register
         </button>
-        <p>
-          Already have account{' '}
+        <p className='signup_link'>
+          Already have account ?{' '}
           <Link to='/login' style={{ textDecoration: 'none' }}>
             Login
           </Link>{' '}

@@ -1,6 +1,11 @@
 #signup-form{
-    width: 50vw;
-    height: 70vh;
+    width: 50%;
+    height: auto;
+    padding: 0.5em;
     background: aliceblue;
-    border-radius: 3%;
+    border-radius: 3% 10%;
+}
+.signup_link{
+    text-align: center;
+    margin-top: 1em;
 }
