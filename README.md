@@ -1,6 +1,7 @@
 # Social App
 
   Front end url : http://localhost:3000/
+  
   Back end url : http://localhost:8000/api/auth/
 
 Tech used in this project : 
