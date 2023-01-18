@@ -4,6 +4,7 @@ import '../styles/card.css';
 import Like from './Like';
 import swal from 'sweetalert';
 import { useNavigate } from 'react-router-dom';
+import LikedUser from './LikedUser';
 
 const Card = () => {
   const navigate = useNavigate();
@@ -83,11 +84,8 @@ const Card = () => {
                 <img src={item.photos} className='card-img-top' alt='...' />
               </div>
               <div className='card-footer d-flex'>
-                <img
-                  src={item.userId.profilePic}
-                  className='like_img me-3'
-                  alt='...'
-                />
+                
+                <LikedUser postId={item._id} userId={item.userId._id} />
                 <small className='text-muted '>{item.likeCount}</small>
                 <Like postId={item._id} userId={item.userId._id} />
               </div>

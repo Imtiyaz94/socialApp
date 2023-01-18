@@ -8,16 +8,18 @@ export const saveLike = async ({ userId, postId }) => {
     'userId',
     'likeCount',
   ]);
-  const likedUser = await Like.findOne({ userId: userId, postId: postId });
+  const likedUser = await Like.findOne({
+    $and: [{ userId: userId }, { postId: postId }, { isDeleted: false }],
+  });
   // console.log('liked user', likedUser);
-
   if (!post) {
     return errorHandler(401, 'Post not found');
   }
   if (likedUser) {
-    const disliked = await Like.findOneAndReplace(
-      { postId: postId, userId: userId },
-      { liked: false },
+    const likedId = likedUser._id;
+    const disliked = await Like.findOneAndUpdate(
+      { _id: likedId },
+      { liked: false, isDeleted: true },
       { new: true },
     );
     // await Like.updateOne({ liked: false });

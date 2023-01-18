@@ -102,8 +102,8 @@ const Signin = () => {
         >
           Login
         </button>
-        <p>
-          Don't have account{' '}
+        <p className='signup_link'>
+          Don't have an account ?{' '}
           <Link to='/register' style={{ textDecoration: 'none' }}>
             Register
           </Link>{' '}
