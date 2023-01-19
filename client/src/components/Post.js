@@ -1,11 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import { convertToBase64 } from '../utils/index';
 
 const Post = () => {
-  const navigate = useNavigate();
   const [text, setText] = useState('');
   const [img, setImg] = useState('');
 
@@ -19,7 +17,7 @@ const Post = () => {
   const handleSubmit = async () => {
     const user = await JSON.parse(localStorage.getItem('access_token'));
     const token = user.token;
-    console.log('uploaded', img);
+    // console.log('uploaded', img);
     const formdata = new FormData();
     formdata.append('text', text);
     formdata.append('photos', img);
@@ -30,7 +28,7 @@ const Post = () => {
       data: formdata,
       headers: {
         Authorization: `${token}`,
-        'content-type': 'multipart/form-data',
+        'Content-Type': 'multipart/form-data',
       },
     })
       .then((res) => {
@@ -39,7 +37,6 @@ const Post = () => {
 
         swal({
           title: 'Post Created Successfully',
-          // text: 'Redirecting to login page...',
           content: '',
           icon: 'success',
         });
@@ -69,17 +66,14 @@ const Post = () => {
             <input
               type='file'
               name='file'
-              // value={user.password}
               className='form-control'
+              aria-describedby='file'
               id='file'
               onChange={handleFile}
               required
-              // accept='.jpg, .png, .jpeg'
-              multiple
             />
           </div>
         </div>
-
         <button type='submit' className='btn btn-primary'>
           Post
         </button>

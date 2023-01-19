@@ -4,9 +4,10 @@ const convertToBase64 = (file) => {
     fileReader.readAsDataURL(file);
     fileReader.onload = () => {
       resolve(fileReader.result);
+      console.log('file reader', fileReader.result);
     };
     fileReader.onerror = (error) => {
-      reject(error);
+      reject('error', error);
     };
   });
 };

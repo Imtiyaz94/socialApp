@@ -4,8 +4,8 @@ export const deletePost = async ({ postId, userId }) => {
   try {
     // console.log('post', value, userId.userId, images);
     
-      const deletedPost = await Post.findByIdAndDelete(postId);
-      return deletedPost;
+      const posts = await Post.findById(postId);
+      return posts;
     
     // return { error: true, message: 'No Post found' };
   } catch (error) {

@@ -8,13 +8,6 @@ import { convertToBase64 } from '../utils';
 const Signup = () => {
   const navigate = useNavigate();
   const [error, setError] = useState('');
-  // const [token, setToken] = useState('');
-  // const [user, setUser] = useState({
-  //   username: '',
-  //   email: '',
-  //   password: '',
-  //   gender: '',
-  // });
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -22,15 +15,6 @@ const Signup = () => {
   const [gender, setGender] = useState('');
   const [img, setImg] = useState('');
 
-  // const handleInput = (e) => {
-  //   // e.preventDefault();
-  //   const { name, value } = e.target;
-  //   console.log(name, value);
-  //   setUser({
-  //     ...user,
-  //     [name]: value,
-  //   });
-  // };
   const handleFile = async (e) => {
     const file = e.target.files[0];
     const base64 = await convertToBase64(file);
@@ -50,14 +34,14 @@ const Signup = () => {
     formdata.append('gender', gender);
     formdata.append('profilePic', img);
     // console.log(formdata);
+
     await axios({
       method: 'POST',
       url: 'http://localhost:8000/api/auth/register',
       data: formdata,
       headers: {
-        'content-type': 'multipart/form-data',
+        'Content-Type': 'multipart/form-data',
       },
-      // withCredentials:true
     })
       .then((res) => {
         // console.log('response of signup', res.data.newUser);
@@ -84,6 +68,9 @@ const Signup = () => {
     <div className='container mt-5 p-4 shadow-sm ' id='signup-form'>
       <div className='form-heading h2 text-center'>Sign Up</div>
       <form onSubmit={(e) => handleSubmit(e)}>
+        <div id='username' style={{ color: 'red' }} className='form-text'>
+          {error.message}
+        </div>
         <div className='mb-3'>
           <label htmlFor='username' className='form-label'>
             Username
@@ -99,9 +86,6 @@ const Signup = () => {
             required
           />
         </div>
-        {/* <div id='username' style={{ color: 'red' }} className='form-text'>
-          {error.message}
-        </div> */}
         <div className='mb-3'>
           <label htmlFor='email' className='form-label'>
             Email address

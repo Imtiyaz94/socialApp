@@ -33,17 +33,17 @@ const LikedUser = ({ postId, userId }) => {
   //     values.
   //   }
   return (
-    <div>
+    <>
       {values &&
-        values.map((item, id) => {
-          console.log('likes', item);
+        values.slice(0, 3).map((item, id) => {
+          // console.log('likes', item);
           return (
             <div key={id}>
               <img src={item.profilePic} className='like_img me-3' alt='...' />
             </div>
           );
         })}
-    </div>
+    </>
   );
 };
 
