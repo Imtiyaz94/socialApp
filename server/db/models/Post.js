@@ -4,12 +4,6 @@ import path from 'path';
 const PHOTO_PATH = path.join('../../uploads/post');
 
 const PostSchema = new mongoose.Schema({
-  likes: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Like',
-    },
-  ],
   text: {
     type: String,
   },
@@ -27,6 +21,13 @@ const PostSchema = new mongoose.Schema({
   userId: {
     type: Schema.Types.ObjectId,
     ref: 'User',
+  },
+  isDeleted:{
+    type:Boolean,
+    default:false
+  },
+  deletedAt:{
+    type:Number,
   },
   createdAt: {
     type: Number,

@@ -57,7 +57,7 @@ const Card = () => {
       {values ? (
         values &&
         values.map((item) => {
-          console.log('item', item);
+          // console.log('item', item);
           return (
             <div className='card w-50 h-100 shadow ' id='card' key={item._id}>
               <div className='card-body'>
@@ -83,11 +83,17 @@ const Card = () => {
                 <p className='card-text'>{item.text}</p>
                 <img src={item.photos} className='card-img-top' alt='...' />
               </div>
-              <div className='card-footer d-flex'>
-                
-                <LikedUser postId={item._id} userId={item.userId._id} />
-                <small className='text-muted '>{item.likeCount}</small>
-                <Like postId={item._id} userId={item.userId._id} />
+              <div className='card-footer'>
+                <div className='liked_user_pic '>
+                  <LikedUser postId={item._id} userId={item.userId._id} />
+                </div>
+                <div>
+                  {/* <small className='text-muted h6'>{item.likeCount}</small> */}
+                  <p>{item.likeCount}</p>
+                </div>
+                <div>
+                  <Like postId={item._id} userId={item.userId._id} />
+                </div>
               </div>
             </div>
           );

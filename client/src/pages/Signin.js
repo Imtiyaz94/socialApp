@@ -53,7 +53,8 @@ const Signin = () => {
       }
       // i
     } catch (error) {
-      console.log(error, 'error');
+      // console.log('error', error.response.data.status);
+      setError(error.response.data.status);
     }
   }
   // useEffect((e) => {
@@ -62,6 +63,9 @@ const Signin = () => {
   return (
     <div className='container mt-5 p-3 shadow-sm ' id='signup-form'>
       <div className='form-heading h2 text-center'>Sign In</div>
+      <div id='emailHelp' className='form-text text-danger'>
+        {error}
+      </div>
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className='mb-3'>
           <label htmlFor='email' className='form-label'>
@@ -77,9 +81,6 @@ const Signin = () => {
             onChange={handleInput}
             required
           />
-          <div id='emailHelp' className='form-text'>
-            {error}
-          </div>
         </div>
         <div className='mb-3'>
           <label htmlFor='password' className='form-label'>

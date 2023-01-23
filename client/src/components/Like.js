@@ -3,13 +3,11 @@ import { AiFillLike, AiOutlineLike } from 'react-icons/ai';
 import '../styles/like.css';
 import axios from 'axios';
 import swal from 'sweetalert';
-import { useNavigate, useParams } from 'react-router-dom';
-import convertToBase64 from '../utils/index';
+import { useNavigate } from 'react-router-dom';
 
 const Like = ({ postId, userId }) => {
-  // const postId = useParams();
   const navigate = useNavigate();
-  console.log('all postid', postId, userId);
+  // console.log('all postid', postId, userId);
   const [liked, setLiked] = useState(false);
 
   const handleSubmit = async () => {
@@ -27,7 +25,7 @@ const Like = ({ postId, userId }) => {
       },
     })
       .then((res) => {
-        // console.log('token', res.headers);
+        console.log('like ', res.data);
 
         if (res.data.savedLike.error === false) {
           swal({
@@ -50,7 +48,7 @@ const Like = ({ postId, userId }) => {
           setLiked(false);
           navigate('/');
         }
-        console.log('users data', res.data.savedLike);
+        // console.log('users data', res.data.savedLike);
       })
       .catch((err) => {
         // console.log(err);

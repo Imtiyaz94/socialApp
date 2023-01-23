@@ -1,3 +1,7 @@
+.card-footer{
+    display: flex;
+}
+
 .likeBtn{
     color: blue;
     border: none;
@@ -9,4 +13,8 @@
     height: 25px;
     border-radius: 50%;
 
+}
+.liked_user_pic{
+    display: flex;
+    margin: 0;
 }
