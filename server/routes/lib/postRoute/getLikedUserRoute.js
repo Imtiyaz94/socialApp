@@ -1,23 +1,17 @@
-import { Like, Post, User } from '../../../db/models/index.js';
+import PostQueries from '../../../db/queries/post/index.js';
+import { likedUser } from '../../../src/app/posts/index.js';
 
 export const getLikeUserRoute = async (req, res) => {
   const postId = req.params.id;
-  console.log('postid by like', postId);
-  const post = await Post.findById({ _id: postId });
-
+  const post = await PostQueries.findPost(postId);
   // console.log('post by user', post);
-  //   const { userId } = req.user;
 
-  const like = await await Like.find({
-    $and: [{ postId: post._id }, { isDeleted: false }],
-  });
-  const mapUser = like.map((user) => {
-    // console.log('user in map', user.userId);
-    return user.userId;
-  });
+  if (!post) {
+    return res.status(200).send({ message: 'No Post Found' });
+  }
 
-  const likedUser = await User.find({ _id: { $in: mapUser } });
+  const users = await likedUser({ post });
   // console.log('like by user', likedUser);
-  const { username, _id, ...user } = { ...likedUser };
+  const { username, _id, ...user } = users;
   return res.status(200).send({ ...user });
 };
